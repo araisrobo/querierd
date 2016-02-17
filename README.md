@@ -171,6 +171,23 @@ After you have approved that everything works fine its time to enable the servic
 
     sudo systemctl enable querierd.service
 
+### Linux systems that use Upstart (e.g. Ubuntu 14.04):
+
+Copy the service file to the upstart directory:
+
+    sudo cp lib/upstart/querierd.conf /etc/init/
+
+ * Don't forget to check the permissions!
+ * To change the IGMP broadcast interval add `-i <interval>` to the `querierd.conf` file.
+
+The Upstart service is now ready to be configured:
+
+    sudo start querierd
+
+Wait a few seconds and check the status of the service:
+
+    sudo initctl status querierd
+
 ## Testing
 
 After starting the daemon by
